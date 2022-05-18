@@ -3,10 +3,12 @@ import PrivateRoute from './components/PrivateRoute';
 import Header from './views/Header';
 import Restaurant from './views/Restaurant';
 import AuthPage from './views/Auth';
+import { UserProvider } from './context/UserContext';
 
 export default function App() {
   return (
     <>
+      <UserProvider>
       <Header />
       <Switch>
         <Route path="/login">
@@ -15,7 +17,8 @@ export default function App() {
         <PrivateRoute path="/restaurants">
           <Restaurant />
         </PrivateRoute>
-      </Switch>
+        </Switch>
+        </UserProvider>
     </>
   );
 }
