@@ -6,7 +6,9 @@ export default function Header() {
 
   return (
     <>
-      <div>You're signed in as: {user.email || 'You\'re not signed in!'}</div>
+      <div>
+        <h2>You're signed in as: {user.email || 'You\'re not signed in!'}</h2>
+      </div>
       <button onClick={logout}>Sign Out</button>
     </>
   );
