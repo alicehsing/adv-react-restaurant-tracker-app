@@ -1,5 +1,12 @@
 import React from 'react';
+import AddRestaurant from '../components/AddRestaurant';
+import RestaurantList from '../components/RestaurantList';
 
 export default function Restaurant() {
-  return <div>Restaurant</div>;
+  return (
+    <main>
+      <AddRestaurant />
+      <RestaurantList />
+    </main>
+  );
 }
