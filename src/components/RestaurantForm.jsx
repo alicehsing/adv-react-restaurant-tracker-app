@@ -17,7 +17,7 @@ export default function RestaurantForm() {
 
     addNewRestaurant(formState);
   };
-
+  console.log(formState)
   return (
     <section>
       <h3>Add a restaurant!</h3>
@@ -25,7 +25,7 @@ export default function RestaurantForm() {
         <input id='name' name='name' type='text' placeholder='Name' value={formState.name} onChange={handleFormChange} />
         <input id='location' name='location' type='text' placeholder='Location' value={formState.location} onChange={handleFormChange} />
         <input id='notes' name='notes' type='text' placeholder='Notes' value={formState.notes} onChange={handleFormChange} />
-        <input id='price' name='Price' type='text' placeholder='$$$$$' value={formState.price} onChange={handleFormChange} />
+        <input id='price' name='price' type='text' placeholder='$$$$$' value={formState.price} onChange={handleFormChange} />
         <input id='rating' name='rating' type='number' placeholder='Rating (out of 5)' value={formState.rating} onChange={handleFormChange} />
         <input id='type' name='type' type='text' placeholder='Type' value={formState.type} onChange={handleFormChange} />
         <button>Add</button>
