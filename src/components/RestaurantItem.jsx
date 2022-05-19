@@ -1,11 +1,13 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function RestaurantItem({ restaurant }) {
-  const { name, type } = restaurant;
+  const { name, type, id } = restaurant;
   return (
-    <ul>
-      <li>{name}</li>
-      <li>{type}</li>
-    </ul>
+    <Link to={`/restaurants/${id}`}>
+      <ul>
+        <li>{name}</li>
+        <li>{type}</li>
+      </ul>
+    </Link>
   );
 }
