@@ -1,28 +1,5 @@
 import { createContext, useReducer } from 'react';
 
-// set initial states
-// const initialRestaurants = [
-//   {
-//     id: 0,
-//     name: 'Can Font',
-//     location: '1015 NW Northrup St, Portland, OR 97209',
-//     notes:
-//       'Barcelona-inspired tapas served in an airy, contemporary space with a full bar.',
-//     price: '$$$',
-//     rating: 4,
-//     type: 'Spanish Contemporary',
-//   },
-//   {
-//     id: 1,
-//     name: 'Chapala',
-//     location: '68 W 29th Ave, Eugene, OR 97405',
-//     notes:
-//       'We pride ourselves in our fresh ingredients and partnering with local providers in the preparation of our dishes.',
-//     price: '$$',
-//     rating: 4,
-//     type: 'Mexican',
-//   },
-// ];
 export const RestaurantContext = createContext();
 
 // reducer function
