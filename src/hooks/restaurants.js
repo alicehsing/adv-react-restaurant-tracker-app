@@ -18,6 +18,7 @@ export function useRestaurants() {
       try {
         const payload = await getRestaurants();
         dispatch({ type: 'RESET', payload: payload });
+        console.log('PAYLOAD', payload);
       } catch (error) {
         throw new Error('Failed to fetch data');
       }
