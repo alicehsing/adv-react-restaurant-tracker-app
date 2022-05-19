@@ -7,7 +7,7 @@ import { createContext, useReducer } from 'react';
 //     name: 'Can Font',
 //     location: '1015 NW Northrup St, Portland, OR 97209',
 //     notes:
-//       'Barelona-inspired tapas served in an airy, contemporary space with a full bar.',
+//       'Barcelona-inspired tapas served in an airy, contemporary space with a full bar.',
 //     price: '$$$',
 //     rating: 4,
 //     type: 'Spanish Contemporary',
@@ -30,7 +30,7 @@ const restaurantReducer = (restaurants, { type, payload }) => {
   switch (type) {
     case 'CREATE':
       // return our updated state with the newly added restaurant at the beginning of our list
-      return [payload, ...restaurants];
+      return [payload[0], ...restaurants];
     case 'RESET':
       return payload;
 
