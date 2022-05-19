@@ -1,6 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { RestaurantContext } from '../context/RestaurantContext';
-import { getRestaurants, createRestaurant, getRestaurant } from '../services/restaurants';
+import {
+  getRestaurants,
+  createRestaurant,
+  getRestaurant,
+} from '../services/restaurants';
 
 export function useRestaurants() {
   const context = useContext(RestaurantContext);
@@ -53,12 +57,12 @@ export function useRestaurant(id) {
     const load = async () => {
       try {
         const restaurant = await getRestaurant(id);
-        console.log('HOOK', restaurant)
+        console.log('HOOK', restaurant);
         setRestaurant(restaurant);
       } catch (error) {
         throw new Error('Unable to fetch data');
       }
-    }
+    };
     load();
   }, [id]);
 
