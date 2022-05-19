@@ -32,7 +32,6 @@ const restaurantReducer = (restaurants, { type, payload }) => {
       // return our updated state with the newly added restaurant at the beginning of our list
       return [payload, ...restaurants];
     case 'RESET':
-      console.log('I hit reset!')
       return payload;
 
     default:
