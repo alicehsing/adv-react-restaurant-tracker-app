@@ -11,21 +11,21 @@ export default function App() {
   return (
     <>
       <UserProvider>
-      <RestaurantProvider>
-      <Header />
-      <Switch>
-        <Route path="/login">
-          <AuthPage />
-        </Route>
-        <PrivateRoute path="/restaurants">
-          <Restaurant />
-          </PrivateRoute>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-        </Switch>
+        <RestaurantProvider>
+          <Header />
+          <Switch>
+            <Route path="/login">
+              <AuthPage />
+            </Route>
+            <PrivateRoute path="/restaurants">
+              <Restaurant />
+            </PrivateRoute>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
         </RestaurantProvider>
-        </UserProvider>
+      </UserProvider>
     </>
   );
 }
