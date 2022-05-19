@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { RestaurantContext } from '../context/RestaurantContext';
-import { getRestaurants, createRestaurant } from '../services/restaurants';
+import { getRestaurants, createRestaurant, getRestaurant } from '../services/restaurants';
 
 export function useRestaurants() {
   const context = useContext(RestaurantContext);
@@ -36,4 +36,31 @@ export function useRestaurants() {
   };
 
   return { restaurants, addNewRestaurant };
+}
+
+export function useRestaurant(id) {
+  const context = useContext(RestaurantContext);
+
+  if (context === undefined) {
+    throw new Error('useRestaurant must be used within RestaurantContext');
+  }
+
+  const { restaurants, dispatch } = context;
+
+  const [restaurant, setRestaurant] = useState(null);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const restaurant = await getRestaurant(id);
+        console.log('HOOK', restaurant)
+        setRestaurant(restaurant);
+      } catch (error) {
+        throw new Error('Unable to fetch data');
+      }
+    }
+    load();
+  }, [id]);
+
+  return { restaurant };
 }
