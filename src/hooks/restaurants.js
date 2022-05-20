@@ -52,13 +52,13 @@ export function useRestaurant(id) {
 
   const { restaurants, dispatch } = context;
 
-  const [restaurant, setRestaurant] = useState({});
+  const [restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
     const load = async () => {
       try {
         const fetchRestaurant = await getRestaurant(id);
-        dispatch({ type: 'RESET', payload: fetchRestaurant });
+        // dispatch({ type: 'RESET', payload: fetchRestaurant });
         console.log('HOOK', fetchRestaurant);
         setRestaurant(fetchRestaurant);
       } catch (error) {

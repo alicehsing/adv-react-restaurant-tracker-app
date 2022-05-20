@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import RestaurantForm from '../components/RestaurantForm';
 import { useUser } from '../context/UserContext';
 import { useRestaurant } from '../hooks/restaurants';
@@ -10,10 +10,12 @@ export default function EditRestaurant() {
     const { id } = useParams();
     const { restaurant, update } = useRestaurant(id);
     const { user } = useUser();
-
+  console.log('restaurant', restaurant);
     if (!restaurant) return null;
 
-    const isOwner = user.id === restaurant.user_id;
+  const isOwner = user.id === restaurant?.user_id;
+  console.log('USERID', user.id)
+  console.log('res.user_id', restaurant.user_id)
     const detailURL = `/restaurants/${id}`;
 
     if (!isOwner) {
