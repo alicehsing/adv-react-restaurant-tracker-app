@@ -8,7 +8,7 @@ import RestaurantDetail from './views/RestaurantDetail';
 import { UserProvider } from './context/UserContext';
 import { RestaurantProvider } from './context/RestaurantContext';
 import EditRestaurant from './views/EditRestaurant';
-
+import CopyRestaurant from './views/CopyRestaurant';
 export default function App() {
   return (
     <>
@@ -21,6 +21,9 @@ export default function App() {
             </Route>
             <PrivateRoute exact path="/restaurants/:id/edit">
               <EditRestaurant />
+            </PrivateRoute>
+            <PrivateRoute exact path="/restaurants/:id/copy">
+              <CopyRestaurant />
             </PrivateRoute>
             <PrivateRoute exact path="/restaurants/:id">
               <RestaurantDetail />
