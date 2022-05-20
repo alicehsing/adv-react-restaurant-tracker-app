@@ -6,32 +6,36 @@ import { useRestaurant } from '../hooks/restaurants';
 import { updateRestaurantById } from '../services/restaurants';
 
 export default function EditRestaurant() {
-    const history = useHistory();
-    const { id } = useParams();
-    const { restaurant, update } = useRestaurant(id);
-    const { user } = useUser();
+  const history = useHistory();
+  const { id } = useParams();
+  const { restaurant, update } = useRestaurant(id);
+  const { user } = useUser();
   console.log('restaurant', restaurant);
-    if (!restaurant) return null;
+  if (!restaurant) return null;
 
   const isOwner = user.id === restaurant?.user_id;
-  console.log('USERID', user.id)
-  console.log('res.user_id', restaurant.user_id)
-    const detailURL = `/restaurants/${id}`;
+  console.log('USERID', user.id);
+  console.log('res.user_id', restaurant.user_id);
+  const detailURL = `/restaurants/${id}`;
 
-    if (!isOwner) {
-        history.replace(detailURL);
-        return null;
-    }
+  if (!isOwner) {
+    history.replace(detailURL);
+    return null;
+  }
 
-    const handleSubmit = async (edited) => {
-        await update(edited);
-        history.push('/restaurants');
-    };
- 
+  const handleSubmit = async (edited) => {
+    await update(edited);
+    history.push('/restaurants');
+  };
+
   return (
     <>
-        <Link to={detailURL}>{restaurant.name}</Link> 
-        <RestaurantForm label='Edit Restaurant' restaurant={restaurant} onSubmit={handleSubmit} />  
+      <Link to={detailURL}>Back to Restaurant Detail Page</Link>
+      <RestaurantForm
+        label="Edit Restaurant"
+        restaurant={restaurant}
+        onSubmit={handleSubmit}
+      />
     </>
-  )
+  );
 }

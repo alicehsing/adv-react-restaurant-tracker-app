@@ -1,10 +1,17 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useRestaurants } from '../hooks/restaurants';
 import RestaurantItem from './RestaurantItem';
+import { getRestaurants } from '../services/restaurants';
 
 export default function RestaurantList() {
   const { restaurants } = useRestaurants();
-  console.log('List', restaurants);
+
+  // useEffect(() => {
+  //   const load = async () => {
+  //     await getRestaurants();
+  //   };
+  //   load();
+  // }, []);
 
   if (!restaurants) {
     return <p>Loading</p>;

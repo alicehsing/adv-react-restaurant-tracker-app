@@ -5,7 +5,7 @@ import {
   createRestaurant,
   getRestaurant,
   updateRestaurantById,
-  deleteRestaurantById
+  deleteRestaurantById,
 } from '../services/restaurants';
 
 export function useRestaurants() {
@@ -60,10 +60,8 @@ export function useRestaurant(id) {
       try {
         const fetchRestaurant = await getRestaurant(id);
         // dispatch({ type: 'RESET', payload: fetchRestaurant });
-        console.log('HOOK', fetchRestaurant);
         setRestaurant(fetchRestaurant);
       } catch (error) {
-        console.error('ERROR', error);
         throw new Error('Unable to fetch data');
       }
     };
@@ -74,8 +72,8 @@ export function useRestaurant(id) {
     if (!restaurant) return;
 
     try {
-      const updated = await updateRestaurantById({ ...edits, ...restaurant });
-
+      const updated = await updateRestaurantById({ ...restaurant, ...edits });
+      console.log('UPDATED', updated);
       const payload = { ...updated };
 
       setRestaurant(payload);
@@ -84,13 +82,13 @@ export function useRestaurant(id) {
     } catch (error) {
       throw new error('unsuccessful update');
     }
-  }
+  };
 
   const remove = async () => {
     if (!restaurant) return;
-  
+
     try {
-      console.log('restaurant', restaurant)
+      console.log('restaurant', restaurant);
       const payload = await deleteRestaurantById(restaurant.id);
       setRestaurant(null);
       if (restaurants) dispatch({ type: 'DELETE', payload: payload });
@@ -98,7 +96,7 @@ export function useRestaurant(id) {
     } catch (error) {
       throw new error('Delete not successful');
     }
-  }
+  };
 
   return { restaurant, update, remove };
 }

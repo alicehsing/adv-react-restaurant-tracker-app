@@ -49,6 +49,10 @@ export async function updateRestaurantById({
 }
 
 export async function deleteRestaurantById(id) {
-  const request = await client.from('restaurants').delete().match({ id });
+  const request = await client
+    .from('restaurants')
+    .delete()
+    .match({ id })
+    .single();
   return parseData(request);
 }
