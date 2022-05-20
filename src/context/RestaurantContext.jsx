@@ -17,7 +17,7 @@ const restaurantReducer = (restaurants, { type, payload }) => {
 };
 
 export const RestaurantProvider = ({ children }) => {
-  // bring in useReducer hook, pass in reducer function and set initialRestaurants state
+  // bring in useReducer hook, pass in reducer function
   const [restaurants, dispatch] = useReducer(restaurantReducer);
 
   return (

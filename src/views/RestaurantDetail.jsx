@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useRestaurant, useRestaurants } from '../hooks/restaurants';
-import { getRestaurants } from '../services/restaurants';
+import { useRestaurant } from '../hooks/restaurants';
 
 export default function RestaurantDetail({}) {
   const { id } = useParams();
-  console.log('*ID*', id);
   // const [restaurant, setRestaurant] = useState({});
   const { restaurant } = useRestaurant(id);
   // const { name, location, notes, price, rating, type } = restaurant;
-  console.log('DETAIL', restaurant.restaurant);
   if (!restaurant) {
     return <p>Loading</p>;
   } else {
