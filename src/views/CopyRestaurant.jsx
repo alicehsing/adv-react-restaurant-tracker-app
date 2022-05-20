@@ -10,17 +10,18 @@ export default function CopyAndEditRestaurant() {
   const { restaurant } = useRestaurant(id);
   const { addNewRestaurant } = useRestaurants();
 
-  const handleSubmit = async (copied) => {
+  const handleCopy = async (copied) => {
     await addNewRestaurant(copied);
     history.replace('/restaurants');
   };
 
   return (
     <>
+      <Link to="/restaurants" >Back to List of Restaurants</Link>
       <RestaurantForm
         label="Copy Restaurant"
         restaurant={restaurant}
-        onSubmit={handleSubmit}
+        onCopy={handleCopy}
       />
     </>
   );
