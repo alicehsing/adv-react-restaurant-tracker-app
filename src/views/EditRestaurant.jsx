@@ -31,7 +31,7 @@ export default function EditRestaurant() {
   return (
     <>
         <Link to={detailURL}>{restaurant.name}</Link> 
-        <RestaurantForm label='Edit Suggestion' restaurant={restaurant} onSubmit={handleSubmit} />  
+        <RestaurantForm label='Edit Restaurant' restaurant={restaurant} onSubmit={handleSubmit} />  
     </>
   )
 }

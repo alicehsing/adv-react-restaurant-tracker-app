@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from '../hooks/useForm';
 import { useRestaurants } from '../hooks/restaurants';
 
-export default function RestaurantForm() {
+export default function RestaurantForm({ label='Edit Restaurant' }) {
   const { addNewRestaurant } = useRestaurants();
   const { formState, handleFormChange, formError, setFormError } = useForm({
     name: '',
@@ -12,6 +12,7 @@ export default function RestaurantForm() {
     rating: '',
     type: '',
   });
+
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -27,7 +28,7 @@ export default function RestaurantForm() {
 
   return (
     <section>
-      <h3>Add a restaurant!</h3>
+      <legend>{label}</legend>
       <form onSubmit={handleSubmit}>
         <input
           id="name"
@@ -77,7 +78,7 @@ export default function RestaurantForm() {
           value={formState.type}
           onChange={handleFormChange}
         />
-        <button>Add</button>
+        <button>Save</button>
       </form>
     </section>
   );

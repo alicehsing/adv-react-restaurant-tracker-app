@@ -5,7 +5,7 @@ import RestaurantList from '../components/RestaurantList';
 export default function Restaurant() {
   return (
     <main>
-      <RestaurantForm />
+      <RestaurantForm label="Add a Restaurant"/>
       <RestaurantList />
     </main>
   );
