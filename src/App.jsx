@@ -7,6 +7,7 @@ import AuthPage from './views/Auth';
 import RestaurantDetail from './views/RestaurantDetail';
 import { UserProvider } from './context/UserContext';
 import { RestaurantProvider } from './context/RestaurantContext';
+import EditRestaurant from './views/EditRestaurant';
 
 export default function App() {
   return (
@@ -18,11 +19,14 @@ export default function App() {
             <Route path="/login">
               <AuthPage />
             </Route>
-            <PrivateRoute path="/restaurants/:id">
+            <PrivateRoute exact path="/restaurants/:id">
               <RestaurantDetail />
             </PrivateRoute>
-            <PrivateRoute path="/restaurants">
+            <PrivateRoute exact path="/restaurants">
               <Restaurant />
+            </PrivateRoute>
+            <PrivateRoute exact path="/restaurants/:id/edit">
+              <EditRestaurant />
             </PrivateRoute>
             <Route exact path="/">
               <Home />

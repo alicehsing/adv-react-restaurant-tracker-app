@@ -4,6 +4,7 @@ import {
   getRestaurants,
   createRestaurant,
   getRestaurant,
+  updateRestaurantById
 } from '../services/restaurants';
 
 export function useRestaurants() {
@@ -68,5 +69,21 @@ export function useRestaurant(id) {
     load();
   }, [id]);
 
-  return { restaurant };
+  const update = async (edits) => {
+    if (!restaurant) return;
+
+    try {
+      const updated = await updateRestaurantById({ ...edits, ...restaurant });
+
+      const payload = { ...updated };
+
+      setRestaurant(payload);
+      if (restaurants) dispatch({ type: 'UPDATE', payload: payload });
+      return payload;
+    } catch (error) {
+      throw new error('unsuccessful update');
+    }
+  }
+
+  return { restaurant, update };
 }
