@@ -13,7 +13,7 @@ export default function EditRestaurant() {
 
     if (!restaurant) return null;
 
-    const isOwner = user.email === restaurant.email;
+    const isOwner = user.id === restaurant.user_id;
     const detailURL = `/restaurants/${id}`;
 
     if (!isOwner) {

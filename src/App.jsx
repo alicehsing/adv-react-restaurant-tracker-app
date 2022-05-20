@@ -19,14 +19,14 @@ export default function App() {
             <Route path="/login">
               <AuthPage />
             </Route>
-            <PrivateRoute exact path="/restaurants/:id">
+            <PrivateRoute path="/restaurants/:id/edit">
+              <EditRestaurant />
+            </PrivateRoute>
+            <PrivateRoute path="/restaurants/:id">
               <RestaurantDetail />
             </PrivateRoute>
-            <PrivateRoute exact path="/restaurants">
+            <PrivateRoute path="/restaurants">
               <Restaurant />
-            </PrivateRoute>
-            <PrivateRoute exact path="/restaurants/:id/edit">
-              <EditRestaurant />
             </PrivateRoute>
             <Route exact path="/">
               <Home />
