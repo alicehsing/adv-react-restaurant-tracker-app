@@ -1,14 +1,21 @@
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+import { useRestaurant } from '../hooks/restaurants';
 
 export default function RestaurantItem({ restaurant }) {
   const { name, type, id } = restaurant;
-  // const { id } = useParams();
+  const history = useHistory();
+  const { remove } = useRestaurant(id);
 
   const { user } = useUser();
   const isOwner = user.id === restaurant.user_id;
-  console.log('USER', user);
+
+  const handleDelete = async () => {
+    if (!confirm('Are you sure?')) return;
+    await remove();
+    history.replace('/restaurants');
+  };
 
   return (
     <>
@@ -22,7 +29,7 @@ export default function RestaurantItem({ restaurant }) {
         {isOwner && <Link to={`/restaurants/${id}/edit`}>
           <button>Edit</button>
         </Link>}
-        <button>Delete</button>
+        {isOwner && <button onClick={handleDelete}>Delete</button>}
       </div>
     </>
   );
