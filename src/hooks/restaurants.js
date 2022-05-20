@@ -51,15 +51,17 @@ export function useRestaurant(id) {
 
   const { restaurants, dispatch } = context;
 
-  const [restaurant, setRestaurant] = useState(null);
+  const [restaurant, setRestaurant] = useState({});
 
   useEffect(() => {
     const load = async () => {
       try {
-        const restaurant = await getRestaurant(id);
-        console.log('HOOK', restaurant);
-        setRestaurant(restaurant);
+        const fetchRestaurant = await getRestaurant(id);
+        dispatch({ type: 'RESET', payload: fetchRestaurant });
+        console.log('HOOK', fetchRestaurant);
+        setRestaurant(fetchRestaurant);
       } catch (error) {
+        console.error('ERROR', error);
         throw new Error('Unable to fetch data');
       }
     };
