@@ -12,6 +12,8 @@ const restaurantReducer = (restaurants, { type, payload }) => {
       return payload;
     case 'UPDATE':
       return restaurants.map((restaurant) => (restaurant.id === payload.id ? payload : restaurant));
+    case 'DELETE':
+      return restaurants.filter((restaurant) => restaurant.id !== payload.id);
     default:
       throw new Error(`Action ${type} is not supported.`);
   }

@@ -4,7 +4,8 @@ import {
   getRestaurants,
   createRestaurant,
   getRestaurant,
-  updateRestaurantById
+  updateRestaurantById,
+  deleteRestaurantById
 } from '../services/restaurants';
 
 export function useRestaurants() {
@@ -85,5 +86,19 @@ export function useRestaurant(id) {
     }
   }
 
-  return { restaurant, update };
+  const remove = async () => {
+    if (!restaurant) return;
+  
+    try {
+      console.log('restaurant', restaurant)
+      const payload = await deleteRestaurantById(restaurant.id);
+      setRestaurant(null);
+      if (restaurants) dispatch({ type: 'DELETE', payload: payload });
+      return payload;
+    } catch (error) {
+      throw new error('Delete not successful');
+    }
+  }
+
+  return { restaurant, update, remove };
 }
