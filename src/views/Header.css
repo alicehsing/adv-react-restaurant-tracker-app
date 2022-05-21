@@ -1,0 +1,14 @@
+.header {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px 200px;
+}
+
+.header button {
+    width: 100px;
+    height: 50px;
+    border-style: none;
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 20px;
+}

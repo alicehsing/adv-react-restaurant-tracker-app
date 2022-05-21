@@ -9,6 +9,8 @@ import { UserProvider } from './context/UserContext';
 import { RestaurantProvider } from './context/RestaurantContext';
 import EditRestaurant from './views/EditRestaurant';
 import CopyRestaurant from './views/CopyRestaurant';
+import './App.css';
+
 export default function App() {
   return (
     <>

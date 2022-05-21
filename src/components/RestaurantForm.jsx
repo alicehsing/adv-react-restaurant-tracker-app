@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from '../hooks/useForm';
 import { useRestaurants } from '../hooks/restaurants';
+import styles from './RestaurantForm.css';
 
 export default function RestaurantForm({
   label = 'Edit Restaurant',
@@ -55,9 +56,9 @@ export default function RestaurantForm({
   }
 
   return (
-    <section>
+    <section className={styles.section}>
+      <form className={styles.form} onSubmit={onSubmit ? handleUpdate : handleSubmit}>
       <legend>{label}</legend>
-      <form onSubmit={onSubmit ? handleUpdate : handleSubmit}>
         <input
           id="name"
           name="name"

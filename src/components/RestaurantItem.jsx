@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { Link, useHistory } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { useRestaurant } from '../hooks/restaurants';
+import styles from './RestaurantItem.css';
+
 export default function RestaurantItem({ restaurant }) {
   const { name, type, id } = restaurant;
   const history = useHistory();
@@ -15,11 +17,11 @@ export default function RestaurantItem({ restaurant }) {
   };
   return (
     <>
-      <div>
+      <div className={styles.list}>
         <Link to={`/restaurants/${id}`}>
           <ul>
-            <li>{name}</li>
-            <li>{type}</li>
+            <li>Restaurant Name:&nbsp;{name}</li>
+            <li>Restaurant Type:&nbsp;{type}</li>
           </ul>
         </Link>
         {isOwner && (
