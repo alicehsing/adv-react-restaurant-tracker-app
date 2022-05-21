@@ -10,6 +10,8 @@ export default function CopyAndEditRestaurant() {
   const { restaurant } = useRestaurant(id);
   const { addNewRestaurant } = useRestaurants();
 
+  if (!restaurant) return null;
+  
   const handleCopy = async (copied) => {
     await addNewRestaurant(copied);
     history.replace('/restaurants');
