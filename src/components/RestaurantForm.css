@@ -1,0 +1,13 @@
+.form {
+    display: grid;
+    gap: 0.25rem;
+    width: 300px;
+    height: 400px;
+    padding: 10px 120px 10px;
+    margin-top: 40px;
+}
+
+.form button {
+    background-color: rgb(17, 3, 119);
+    color: white;
+}

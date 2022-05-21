@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import { useForm } from '../hooks/useForm';
 import { useRestaurants } from '../hooks/restaurants';
+import styles from './RestaurantForm.css';
 
-export default function RestaurantForm() {
+export default function RestaurantForm({
+  label = 'Edit Restaurant',
+  restaurant,
+  onSubmit,
+  onCopy
+}) {
   const { addNewRestaurant } = useRestaurants();
   const { formState, handleFormChange, formError, setFormError } = useForm({
-    name: '',
-    location: '',
-    notes: '',
-    price: '',
-    rating: '',
-    type: '',
+    name: restaurant ? restaurant.name : '',
+    location: restaurant ? restaurant.location : '',
+    notes: restaurant ? restaurant.notes : '',
+    price: restaurant ? restaurant.price : '',
+    rating: restaurant ? restaurant.rating : '',
+    type: restaurant ? restaurant.type : '',
   });
 
   async function handleSubmit(event) {
@@ -25,10 +31,34 @@ export default function RestaurantForm() {
     addNewRestaurant(formState);
   }
 
+  async function handleUpdate(event) {
+    event.preventDefault();
+    if (!formState.name) return setFormError('Name is required');
+    if (!formState.location) return setFormError('Location is required');
+    if (!formState.notes) return setFormError('Notes are required');
+    if (!formState.price) return setFormError('Price is required');
+    if (!formState.rating) return setFormError('Rating is required');
+    if (!formState.type) return setFormError('Type is required');
+
+    onSubmit(formState);
+  }
+
+  async function handleCopy(event) {
+    event.preventDefault();
+    if (!formState.name) return setFormError('Name is required');
+    if (!formState.location) return setFormError('Location is required');
+    if (!formState.notes) return setFormError('Notes are required');
+    if (!formState.price) return setFormError('Price is required');
+    if (!formState.rating) return setFormError('Rating is required');
+    if (!formState.type) return setFormError('Type is required');
+
+    onCopy(formState);
+  }
+
   return (
-    <section>
-      <h3>Add a restaurant!</h3>
-      <form onSubmit={handleSubmit}>
+    <section className={styles.section}>
+      <form className={styles.form} onSubmit={onSubmit ? handleUpdate : handleSubmit}>
+      <legend>{label}</legend>
         <input
           id="name"
           name="name"
@@ -77,7 +107,7 @@ export default function RestaurantForm() {
           value={formState.type}
           onChange={handleFormChange}
         />
-        <button>Add</button>
+        <button>Save</button>
       </form>
     </section>
   );
